@@ -8,9 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RoleMiddleware
 {
-    /**
-     * Handle an incoming request.
-     */
+
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
         if (! $request->user() || ! in_array($request->user()->role, $roles, true)) {

@@ -12,9 +12,6 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // ==========================================
-        // KATEGORI PRODUK
-        // ==========================================
 
         $categories = [
             'Laptop',
@@ -33,15 +30,9 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // ==========================================
-        // 50 PRODUK REALISTIS
-        // ==========================================
 
         $products = [
 
-            // =========================
-            // LAPTOP - 10 PRODUK
-            // =========================
 
             [
                 'category' => 'Laptop',
@@ -114,9 +105,6 @@ class DatabaseSeeder extends Seeder
                 'stock' => 8,
             ],
 
-            // =========================
-            // SMARTPHONE - 10 PRODUK
-            // =========================
 
             [
                 'category' => 'Smartphone',
@@ -189,10 +177,6 @@ class DatabaseSeeder extends Seeder
                 'stock' => 12,
             ],
 
-            // =========================
-            // AKSESORIS - 10 PRODUK
-            // =========================
-
             [
                 'category' => 'Aksesoris',
                 'name' => 'Mouse Wireless Logitech',
@@ -263,10 +247,6 @@ class DatabaseSeeder extends Seeder
                 'price' => 150000,
                 'stock' => 25,
             ],
-
-            // =========================
-            // GAMING - 10 PRODUK
-            // =========================
 
             [
                 'category' => 'Gaming',
@@ -339,9 +319,6 @@ class DatabaseSeeder extends Seeder
                 'stock' => 20,
             ],
 
-            // =========================
-            // PENYIMPANAN - 10 PRODUK
-            // =========================
 
             [
                 'category' => 'Penyimpanan',
@@ -415,9 +392,6 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
-        // ==========================================
-        // SIMPAN PRODUK
-        // ==========================================
 
         foreach ($products as $product) {
             Product::create([
@@ -431,9 +405,6 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // ==========================================
-        // AKUN ADMIN
-        // ==========================================
 
         User::create([
             'name' => 'Admin',
@@ -442,9 +413,6 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
         ]);
 
-        // ==========================================
-        // AKUN EDITOR
-        // ==========================================
 
         User::create([
             'name' => 'Editor',
@@ -453,9 +421,6 @@ class DatabaseSeeder extends Seeder
             'role' => 'editor',
         ]);
 
-        // ==========================================
-        // USER BIASA
-        // ==========================================
 
         User::factory()->count(10)->create([
             'role' => 'user',

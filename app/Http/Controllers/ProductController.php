@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    /**
-     * Menampilkan daftar produk.
-     */
+
     public function index()
     {
         $products = Product::with('category')
@@ -22,9 +20,7 @@ class ProductController extends Controller
         return view('products.index', compact('products'));
     }
 
-    /**
-     * Menampilkan form tambah produk.
-     */
+
     public function create()
     {
         Gate::authorize('create', Product::class);
@@ -34,9 +30,7 @@ class ProductController extends Controller
         return view('products.create', compact('categories'));
     }
 
-    /**
-     * Menyimpan produk baru.
-     */
+
     public function store(Request $request)
     {
         Gate::authorize('create', Product::class);
@@ -47,7 +41,7 @@ class ProductController extends Controller
             'description' => ['nullable', 'string'],
             'price' => ['required', 'numeric', 'min:0'],
             'stock' => ['required', 'integer', 'min:0'],
-            'image' => ['nullable', 'image', 'max:2048'],
+            'iamge' => ['nullable', 'image', 'max:2048'],
             'is_active' => ['nullable', 'boolean'],
         ]);
 
@@ -65,9 +59,7 @@ class ProductController extends Controller
             ->with('success', 'Produk berhasil ditambahkan.');
     }
 
-    /**
-     * Menampilkan detail produk.
-     */
+
     public function show(Product $product)
     {
         $product->load('category');
@@ -77,9 +69,6 @@ class ProductController extends Controller
         return view('products.show', compact('product'));
     }
 
-    /**
-     * Menampilkan form edit produk.
-     */
     public function edit(Product $product)
     {
         Gate::authorize('update', $product);
@@ -89,9 +78,7 @@ class ProductController extends Controller
         return view('products.edit', compact('product', 'categories'));
     }
 
-    /**
-     * Memperbarui produk.
-     */
+
     public function update(Request $request, Product $product)
     {
         Gate::authorize('update', $product);
@@ -124,9 +111,7 @@ class ProductController extends Controller
             ->with('success', 'Produk berhasil diperbarui.');
     }
 
-    /**
-     * Menghapus produk.
-     */
+
     public function destroy(Product $product)
     {
         Gate::authorize('delete', $product);
